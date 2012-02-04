@@ -63,6 +63,7 @@
 
       "--skip-default-init" (recur (cons arg more)
                                    (assoc arg-map :skip-default-init true))
+      "--no-clojuredocs" (recur (cons arg more) (assoc arg-map :no-clojuredocs true))
       arg-map)))
 
 (defn launch-nrepl [options]
@@ -118,6 +119,7 @@ See -main for descriptions."
   --nrepl:             Launch nREPL (clojure.tools.nrepl) in interactive mode
   --attach:            Attach to an existing nrepl session on this port, when used with --nrepl
   --port:              Start a new nrepl session on this port, when used with --nrepl
-  --color:             Use color; currently only available with --nrepl"
+  --color:             Use color; currently only available with --nrepl
+  --no-clojuredocs     Do not include clojuredocs client dependencies"
   [& args]
   (launch (parse-args args)))
